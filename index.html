@@ -3,144 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>📚 Exam Mood Detector | Troll Funny Project</title>
+    <title>📉 EXAM MOOD DETECTOR | Full Screen Troll Edition</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; 
         }
 
+        /* FULL SCREEN LAYOUT - no overflow, 100vh immersive */
         body {
-            background: linear-gradient(145deg, #1e2a3a 0%, #0f1724 100%);
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03060c);
             min-height: 100vh;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', 'Poppins', 'Comic Neue', 'Fredoka One', system-ui, -apple-system, 'Inter', sans-serif;
-            padding: 1.5rem;
+            font-family: 'Segoe UI', 'Poppins', 'Inter', system-ui, -apple-system, 'Comic Neue', monospace;
+            padding: 1.2rem;
+            margin: 0;
         }
 
+        /* main card - full screen vibes but with modern glassmorphism, taking almost full width/height */
         .detector-card {
-            max-width: 620px;
             width: 100%;
-            background: rgba(255, 248, 225, 0.98);
-            border-radius: 68px;
-            box-shadow: 0 30px 45px rgba(0, 0, 0, 0.4), 0 8px 18px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.6);
+            max-width: 1400px;
+            height: auto;
+            min-height: 85vh;
+            background: rgba(12, 20, 30, 0.75);
+            backdrop-filter: blur(14px);
+            border-radius: 64px;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
             overflow: hidden;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(0px);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: flex;
+            flex-direction: column;
         }
 
+        /* new fresh header - neon + punk */
         .troll-header {
-            background: #ffb347;
-            background: linear-gradient(135deg, #ff9a3c, #ff6f3c);
-            padding: 1.5rem 2rem;
+            background: linear-gradient(115deg, #ff3c00, #ffb347, #ff2d75);
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease infinite;
+            padding: 1.8rem 2.5rem;
             text-align: center;
-            border-bottom: 5px solid #ffdd99;
+            border-bottom: 3px solid #ffec80;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .troll-header h1 {
-            font-size: 2.3rem;
-            letter-spacing: -0.5px;
-            color: #2d1b00;
-            text-shadow: 3px 3px 0 #ffdd99;
+            font-size: 3.2rem;
+            letter-spacing: -1px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 5px 5px 0 #b13e00, 2px 2px 20px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .troll-header p {
             font-weight: bold;
-            background: #2c1a0c;
+            background: #000000aa;
+            backdrop-filter: blur(4px);
             display: inline-block;
-            padding: 6px 18px;
+            padding: 8px 24px;
             border-radius: 60px;
-            color: #ffe2b5;
-            font-size: 0.85rem;
-            margin-top: 12px;
+            color: #ffeaaf;
+            font-size: 0.9rem;
+            margin-top: 16px;
+            letter-spacing: 0.5px;
+            border: 1px solid #ffb86b;
         }
 
-        /* main content */
+        /* content expands to fill space */
         .content {
-            padding: 2rem 2rem 2rem 2rem;
+            padding: 2rem 2.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
         }
 
+        /* fresh input row layout */
+        .input-row {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
         .input-group {
-            margin-bottom: 1.7rem;
+            flex: 1;
+            min-width: 180px;
         }
 
         label {
-            font-weight: 800;
+            font-weight: 700;
             font-size: 1rem;
-            color: #3b2a1f;
+            color: #ffe6c7;
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        label i {
-            font-size: 1.2rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.2px;
+            backdrop-filter: blur(2px);
         }
 
         input, select {
             width: 100%;
-            padding: 14px 18px;
+            padding: 16px 20px;
             font-size: 1rem;
-            border: 2px solid #ffcf9a;
-            background: #fffef7;
-            border-radius: 48px;
+            border: none;
+            background: rgba(20, 28, 40, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 56px;
             outline: none;
-            transition: 0.2s;
+            transition: 0.25s;
             font-family: inherit;
             font-weight: 500;
-            color: #2f241b;
+            color: #fff3e0;
+            border: 1px solid rgba(255, 180, 80, 0.5);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
 
         input:focus, select:focus {
-            border-color: #ff8833;
-            box-shadow: 0 0 0 3px rgba(255, 136, 51, 0.3);
-            background: white;
+            border-color: #ffaa44;
+            background: #1f2a38;
+            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.4);
+            color: white;
         }
 
+        /* ULTRA MODERN TROLL BUTTON */
         .troll-btn {
-            background: #2ecc71;
-            background: linear-gradient(95deg, #f39c12, #e67e22);
+            background: linear-gradient(105deg, #f0a500, #ff5e00);
             border: none;
             width: 100%;
-            padding: 16px 12px;
-            font-size: 1.6rem;
+            padding: 18px 12px;
+            font-size: 1.8rem;
             font-weight: bold;
-            border-radius: 60px;
+            border-radius: 80px;
             color: white;
-            text-shadow: 1px 1px 0 #a04000;
+            text-shadow: 2px 2px 0 #aa4a00;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            box-shadow: 0 8px 0 #b45f1b;
-            transform: translateY(-2px);
-            margin-top: 10px;
+            gap: 16px;
+            box-shadow: 0 12px 0 #8b3c00;
+            transform: translateY(-4px);
+            margin-top: 12px;
+            letter-spacing: 2px;
         }
 
         .troll-btn:active {
             transform: translateY(5px);
-            box-shadow: 0 3px 0 #b45f1b;
+            box-shadow: 0 5px 0 #8b3c00;
         }
 
+        /* result panel: premium glass dark */
         .result-area {
-            margin-top: 32px;
-            background: #2f2e2b;
-            background: linear-gradient(115deg, #2a241e, #1f1b16);
-            border-radius: 48px;
-            padding: 1.6rem;
-            box-shadow: inset 0 1px 4px rgba(0,0,0,0.6), 0 8px 18px rgba(0,0,0,0.2);
+            margin-top: 8px;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 56px;
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 200, 100, 0.4);
             transition: all 0.3s ease;
         }
 
@@ -149,51 +184,59 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
-            border-bottom: 2px dashed #ffa559;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            gap: 15px;
+            border-bottom: 2px solid #ffae5a;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
         }
 
         .stress-meter {
-            background: #1a1612;
-            border-radius: 60px;
-            padding: 5px 12px;
-            font-weight: bold;
-            font-size: 1.3rem;
-            color: #ffb347;
+            background: #000000aa;
+            backdrop-filter: blur(4px);
+            border-radius: 80px;
+            padding: 8px 20px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #ffbf69;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            font-family: monospace;
         }
 
         .funny-quote {
             font-size: 1.7rem;
             font-weight: 800;
-            background: #00000055;
-            padding: 12px 18px;
-            border-radius: 40px;
-            margin: 12px 0;
+            background: rgba(0,0,0,0.4);
+            padding: 16px 22px;
+            border-radius: 56px;
+            margin: 15px 0;
             text-align: center;
             word-break: break-word;
-            color: #ffe5b4;
-            line-height: 1.3;
+            color: #fff0cf;
+            line-height: 1.4;
+            letter-spacing: -0.2px;
+            border-left: 6px solid #ff914d;
         }
 
         .extra-troll {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 12px;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 14px;
             font-size: 1rem;
-            background: #00000044;
-            border-radius: 50px;
-            padding: 8px 15px;
-            color: #ffd966;
+            background: #00000055;
+            border-radius: 60px;
+            padding: 12px 20px;
+            color: #ffdd99;
+            font-weight: 600;
         }
 
-        .extra-troll span {
-            font-weight: bold;
+        .extra-troll span:first-child {
+            font-weight: 800;
+            color: #ffbc6e;
         }
 
         .blink {
@@ -201,50 +244,79 @@
         }
 
         @keyframes blinkAnim {
-            0% { opacity: 1; text-shadow: 0 0 2px red; }
-            50% { opacity: 0.7; text-shadow: 0 0 8px orange; }
-            100% { opacity: 1; text-shadow: 0 0 2px red; }
+            0% { opacity: 1; text-shadow: 0 0 2px #ff5500; }
+            50% { opacity: 0.7; text-shadow: 0 0 12px #ffaa33; }
+            100% { opacity: 1; text-shadow: 0 0 2px #ff5500; }
         }
 
         .shake {
-            animation: shakeAnim 0.4s ease-in-out 0s 1;
+            animation: shakeAnim 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
         }
 
         @keyframes shakeAnim {
             0% { transform: translateX(0); }
-            25% { transform: translateX(-6px); }
-            75% { transform: translateX(6px); }
+            20% { transform: translateX(-7px); }
+            40% { transform: translateX(7px); }
+            60% { transform: translateX(-3px); }
+            80% { transform: translateX(3px); }
             100% { transform: translateX(0); }
         }
 
         footer {
-            background: #eadbba;
+            background: #0a0c16cc;
+            backdrop-filter: blur(8px);
             text-align: center;
-            padding: 12px;
-            font-size: 0.7rem;
+            padding: 16px;
+            font-size: 0.8rem;
             font-weight: bold;
-            color: #553b1f;
+            color: #ffce93;
+            border-top: 1px solid #ffb35955;
         }
 
-        @media (max-width: 500px) {
-            .content {
-                padding: 1.5rem;
+        /* full responsiveness for huge screens */
+        @media (max-width: 780px) {
+            .troll-header h1 {
+                font-size: 2.2rem;
             }
             .funny-quote {
                 font-size: 1.3rem;
             }
-            .troll-header h1 {
-                font-size: 1.7rem;
+            .content {
+                padding: 1.5rem;
+            }
+            .troll-btn {
+                font-size: 1.4rem;
+                padding: 14px;
+            }
+            .stress-meter {
+                font-size: 1.2rem;
             }
         }
 
-        .input-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+        @media (max-width: 550px) {
+            .detector-card {
+                border-radius: 40px;
+            }
+            .troll-header h1 {
+                font-size: 1.7rem;
+                gap: 8px;
+            }
+            .extra-troll {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
-        .input-row .input-group {
-            flex: 1;
+
+        /* glow effect on result values */
+        .glow-text {
+            transition: 0.2s;
+        }
+        button {
+            font-family: inherit;
+        }
+        select option {
+            background: #1a1f2c;
+            color: #ffefcf;
         }
     </style>
 </head>
@@ -253,48 +325,49 @@
 <div class="detector-card" id="appRoot">
     <div class="troll-header">
         <h1>
-            📉 EXAM MOOD DETECTOR 🤯
-            <span>😂</span>
+            🧠 EXAM MOOD DETECTOR 🤯
+            <span>⚡ FULL TROLL MODE</span>
         </h1>
-        <p>⚡ 100% accurate nonsense | troll edition ⚡</p>
+        <p>🔥 100% sarcastic analysis • Real-time panic meter 🔥</p>
     </div>
 
     <div class="content">
         <div class="input-row">
             <div class="input-group">
-                <label>📅 Exam Date <span style="font-size:0.7rem;">(relative vibe)</span></label>
+                <label>📅 Exam proximity <span style="opacity:0.7;">(panic scale)</span></label>
                 <select id="examProximity">
-                    <option value="far">🌸 Far future (>2 weeks)</option>
-                    <option value="week">😬 In 1 week</option>
-                    <option value="days" selected>🔥 2-3 days left (PANIC)</option>
-                    <option value="tomorrow">💀 TOMORROW!!</option>
-                    <option value="today">🆘 TODAY in few hours</option>
+                    <option value="far">🌸 Far future (>2 weeks) – chill</option>
+                    <option value="week">😬 1 week left – some anxiety</option>
+                    <option value="days" selected>🔥 2–3 days left – PANIC RISING</option>
+                    <option value="tomorrow">💀 TOMORROW!! – crisis mode</option>
+                    <option value="today">🆘 TODAY in hours – CODE RED</option>
                 </select>
             </div>
             <div class="input-group">
                 <label>📚 Study hours (last 24h)</label>
-                <input type="number" id="studyHours" value="2" step="0.5" min="0" max="24" placeholder="0 - 24 hrs">
+                <input type="number" id="studyHours" value="2" step="0.5" min="0" max="24" placeholder="Hours studied">
             </div>
         </div>
 
         <div class="input-group">
-            <label>📖 Subject (optional troll spice)</label>
-            <input type="text" id="subjectInput" placeholder="e.g., Calculus, AI, Chemistry, Life..." value="Data Structures">
+            <label>📖 Subject (roast intensifier)</label>
+            <input type="text" id="subjectInput" placeholder="e.g., Quantum Physics, AI, History, Calculus..." value="Data Structures">
         </div>
 
         <button class="troll-btn" id="detectMoodBtn">
-            🧠 CHECK MY MOOD 🤪 <span>⚡</span>
+            🧪 DETECT MY MOOD 🤪 <span>⚡</span>
         </button>
 
+        <!-- result panel -->
         <div id="resultPanel" class="result-area">
             <div class="mood-badge">
                 <div class="stress-meter">
-                    😩 STRESS INDEX: <span id="stressPercent">0%</span>
+                    😩 STRESS INDEX: <span id="stressPercent" class="glow-text">0%</span>
                 </div>
-                <div style="font-size:1.6rem;" id="emojiOverload">😶‍🌫️</div>
+                <div style="font-size:2rem; filter: drop-shadow(0 0 6px #ff8800);" id="emojiOverload">😶‍🌫️</div>
             </div>
             <div class="funny-quote" id="funnyMessage">
-                😴 Enter exam details & click button 😴
+                😴 Enter exam details & feel the roast 😴
             </div>
             <div class="extra-troll">
                 <span>💤 SLEEP STATUS:</span>
@@ -309,12 +382,13 @@
         </div>
     </div>
     <footer>
-        🤣 Warning: this detector is sarcastic & for fun. No actual brain scanning involved.
+        🤣 Warning: this detector uses 100% artificial nonsense. No brains were harmed. | Troll Lab ⚡
     </footer>
 </div>
 
 <script>
     (function(){
+        // DOM elements
         const proximitySelect = document.getElementById('examProximity');
         const studyHoursInput = document.getElementById('studyHours');
         const subjectInput = document.getElementById('subjectInput');
@@ -327,6 +401,7 @@
         const prepLoadSpan = document.getElementById('prepLoad');
         const resultPredictionSpan = document.getElementById('resultPrediction');
         
+        // Updated metric engine with extra troll spice (full screen version)
         function calculateTrollMetrics(proximityVal, studyHours, subject) {
             let rawStudy = parseFloat(studyHours);
             if(isNaN(rawStudy)) rawStudy = 0;
@@ -335,103 +410,111 @@
             let proximityFactor = 0;
             let proximityText = "";
             switch(proximityVal) {
-                case 'far': proximityFactor = 15; proximityText = "far away"; break;
-                case 'week': proximityFactor = 45; proximityText = "1 week left"; break;
-                case 'days': proximityFactor = 78; proximityText = "2-3 days left"; break;
-                case 'tomorrow': proximityFactor = 94; proximityText = "TOMORROW!!"; break;
+                case 'far': proximityFactor = 12; proximityText = "weeks away"; break;
+                case 'week': proximityFactor = 42; proximityText = "1 week left"; break;
+                case 'days': proximityFactor = 76; proximityText = "2-3 days left"; break;
+                case 'tomorrow': proximityFactor = 95; proximityText = "TOMORROW!!"; break;
                 case 'today': proximityFactor = 99; proximityText = "TODAY (few hours)"; break;
                 default: proximityFactor = 70;
             }
             
+            // study bonus/penalty: less study = huge stress bomb
             let studyBonus = 0;
-            if(rawStudy === 0) studyBonus = 28;
-            else if(rawStudy < 2) studyBonus = 20;
-            else if(rawStudy < 5) studyBonus = 5;
-            else if(rawStudy < 8) studyBonus = -8;
-            else if(rawStudy < 12) studyBonus = -18;
-            else studyBonus = -28;
+            if(rawStudy === 0) studyBonus = 30;
+            else if(rawStudy < 2) studyBonus = 22;
+            else if(rawStudy < 5) studyBonus = 8;
+            else if(rawStudy < 8) studyBonus = -5;
+            else if(rawStudy < 12) studyBonus = -15;
+            else studyBonus = -25;
             
             let stressRaw = proximityFactor + studyBonus;
             let stressFinal = Math.min(99, Math.max(5, Math.floor(stressRaw)));
+            
+            // subject based chaos
             let subjLower = subject.toLowerCase();
-            if(subjLower.includes("calculus") || subjLower.includes("math") || subjLower.includes("physics")) stressFinal = Math.min(99, stressFinal + 12);
-            if(subjLower.includes("ai") || subjLower.includes("machine learning")) stressFinal = Math.min(99, stressFinal + 8);
-            if(subjLower.includes("art") || subjLower.includes("history")) stressFinal = Math.max(5, stressFinal - 10);
+            if(subjLower.includes("calculus") || subjLower.includes("math") || subjLower.includes("physics")) stressFinal = Math.min(99, stressFinal + 14);
+            if(subjLower.includes("ai") || subjLower.includes("machine learning")) stressFinal = Math.min(99, stressFinal + 10);
+            if(subjLower.includes("art") || subjLower.includes("history") || subjLower.includes("philosophy")) stressFinal = Math.max(5, stressFinal - 12);
+            if(subjLower.includes("chemistry")) stressFinal = Math.min(99, stressFinal + 7);
             
+            // Emoji explosion based on stress
             let mainEmoji = "";
-            if(stressFinal >= 90) mainEmoji = "💀☠️😱";
-            else if(stressFinal >= 75) mainEmoji = "🤯🔥😰";
-            else if(stressFinal >= 55) mainEmoji = "😬😓🥴";
-            else if(stressFinal >= 30) mainEmoji = "😐📘😴";
-            else mainEmoji = "😎🍃🧘";
+            if(stressFinal >= 92) mainEmoji = "💀🔥☠️😱💢";
+            else if(stressFinal >= 80) mainEmoji = "🤯😰💀🔥";
+            else if(stressFinal >= 65) mainEmoji = "😬🥴😓💦";
+            else if(stressFinal >= 40) mainEmoji = "😐📘😴🤔";
+            else mainEmoji = "😎🍃🧘✨";
             
+            // Sleep status new funny lines
             let sleepStatusText = "";
-            if(rawStudy >= 10 && proximityVal !== 'far') sleepStatusText = "💀 Sleep? What's that? (0 hrs)";
-            else if(rawStudy >= 6 && (proximityVal === 'tomorrow' || proximityVal === 'today')) sleepStatusText = "😵 Micro-naps only, 2 hrs max";
-            else if(proximityVal === 'today' && rawStudy < 3) sleepStatusText = "😴 Slept 30 mins (nightmare mode)";
-            else if(rawStudy === 0 && proximityVal !== 'far') sleepStatusText = "🛌 You slept like a baby? But exam though 💀";
-            else if(proximityVal === 'far' && rawStudy < 1) sleepStatusText = "😴 Sleep: 10 hours, but no studying";
-            else if(rawStudy > 9) sleepStatusText = "⚡ Zombie mode: 4hr sleep + caffeine";
-            else sleepStatusText = "💤 Sleep status: Missing (estimated 3-5 hrs)";
-            if(proximityVal === 'today') sleepStatusText = "🚨 SLEEP: NON-EXISTENT (panic studying)";
+            if(rawStudy >= 12 && (proximityVal !== 'far')) sleepStatusText = "💀 Sleep = 0 hours (Caffeine IV drip)";
+            else if(rawStudy >= 8 && (proximityVal === 'tomorrow' || proximityVal === 'today')) sleepStatusText = "😵 2h power nap? Who needs sleep?";
+            else if(proximityVal === 'today' && rawStudy < 3) sleepStatusText = "😴 20 mins of anxiety sleep, nice";
+            else if(rawStudy === 0 && proximityVal !== 'far') sleepStatusText = "🛌 Full 8 hours? But syllabus untouched 💀";
+            else if(proximityVal === 'far' && rawStudy < 2) sleepStatusText = "😴 10h sleep, 0h study – balance?";
+            else if(rawStudy > 10) sleepStatusText = "⚡ Zombie mode: sleep? never heard of her";
+            else sleepStatusText = "💤 Sleep status: Missing in action (estimated 2-4 hrs)";
+            if(proximityVal === 'today') sleepStatusText = "🚨 SLEEP: NON-EXISTENT (Panic studying at 3am)";
+            
+            // prep load creative
+            let prepPercent = 0;
+            if(rawStudy === 0) prepPercent = 1;
+            else if(rawStudy < 2) prepPercent = 7;
+            else if(rawStudy < 5) prepPercent = 25;
+            else if(rawStudy < 8) prepPercent = 48;
+            else if(rawStudy < 12) prepPercent = 68;
+            else prepPercent = 86;
+            
+            if(proximityVal === 'tomorrow' && rawStudy > 10) prepPercent = Math.min(94, prepPercent + 6);
+            if(proximityVal === 'today') prepPercent = Math.min(82, prepPercent - 12);
+            if(proximityVal === 'far' && rawStudy < 2) prepPercent = 3;
             
             let prepLoadText = "";
-            let prepPercent = 0;
-            if(rawStudy === 0) prepPercent = 2;
-            else if(rawStudy < 2) prepPercent = 8;
-            else if(rawStudy < 5) prepPercent = 28;
-            else if(rawStudy < 8) prepPercent = 52;
-            else if(rawStudy < 12) prepPercent = 70;
-            else prepPercent = 88;
+            if(prepPercent <= 8) prepLoadText = "🍕 Prep: 1% ... loading... ⏳ (did you even open book?)";
+            else if(prepPercent <= 25) prepLoadText = "📖 Prep status: 'Syllabus? Never met her' — 24%";
+            else if(prepPercent <= 50) prepLoadText = `⚡ Half-baked knowledge: ${prepPercent}% (pray mode)`;
+            else if(prepPercent <= 75) prepLoadText = `😤 Some chapters done: ${prepPercent}% – but exam anxiety high 🔥`;
+            else prepLoadText = `🧠 Brain capacity at ${prepPercent}% – last minute clutch potential! 🚀`;
             
-            if(proximityVal === 'tomorrow' && rawStudy > 10) prepPercent = Math.min(95, prepPercent + 5);
-            if(proximityVal === 'today') prepPercent = Math.min(85, prepPercent - 10);
-            if(proximityVal === 'far' && rawStudy < 2) prepPercent = 5;
-            
-            prepLoadText = `📚 ${prepPercent}% loaded (${rawStudy} hours studied)`;
-            if(prepPercent <= 10) prepLoadText = "🍕 Preparation: 2% ... loading... please wait ⏳";
-            else if(prepPercent <= 25) prepLoadText = "📖 Prep status: 'syllabus who?' – 22%";
-            else if(prepPercent <= 50) prepLoadText = `⚡ Half-baked knowledge: ${prepPercent}%`;
-            else if(prepPercent <= 75) prepLoadText = `😤 Some chapters done: ${prepPercent}% – but exam anxiety high`;
-            else prepLoadText = `🧠 Brain capacity at ${prepPercent}% – last minute clutch possible!`;
-            
-   
+            // funny quote generator (extra savage)
             let funnyQuote = "";
-            const funnyPool = [
-                `"Last minute study mode activated ⚡" – ${subject || "unknown subject"} exam`,
-                `🧠 Brain: buffering... please wait ⏳ (studied ${rawStudy} hrs)`,
-                `😭 "My notes are in another dimension" – stress level ${stressFinal}%`,
-                `📉 Result prediction: Pray 🙏 + sacrifice energy drink`,
-                `🤪 Professor: "Good luck"  ->  you: *chuckles I'm in danger*`,
-                `📚 Syllabus coverage: 1 page per hour 💀`,
-                `😂 Exam mood: 'I'll just write my name beautifully'`,
-                `🕯️ Cramming level: Legendary (panic + ${rawStudy} hours)`,
-                `🚀 "If I study 20hrs now, maybe I'll remember my name"`,
-                `😶‍🌫️ Current strategy: Manifesting A+ without studying`
+            const trollQuotes = [
+                `"Last minute study mode activated ⚡" – ${subject || "unknown"} exam`,
+                `🧠 Brain: buffering... ⏳ (studied ${rawStudy} hrs, stress ${stressFinal}%)`,
+                `😭 "My notes are in Narnia" – stress level ${stressFinal}%`,
+                `📉 Result prediction: Pray 🙏 + Red Bull donation`,
+                `🤡 Professor: "Good luck" → you: *internal screaming*`,
+                `📚 Speedrunning syllabus at ${rawStudy} hours studied 💀`,
+                `😂 Exam mood: 'I'll just write my name and cry'`,
+                `🕯️ Cramming level: Legendary (panic level ${stressFinal}%)`,
+                `🚀 "If I stare at book, knowledge might transfer by osmosis"`,
+                `😶‍🌫️ Manifesting A+ without studying: stress ${stressFinal}%`
             ];
             
-            if(stressFinal >= 90) {
-                funnyQuote = `🔥 ${subject} exam TOMORROW?! STRESS ${stressFinal}% 🔥 "Running on fumes and desperation"`;
+            if(stressFinal >= 92) {
+                funnyQuote = `🔥 ${subject} exam INCOMING! STRESS ${stressFinal}% 🔥 "Running on panic and energy drinks"`;
             } else if(stressFinal >= 75) {
-                funnyQuote = `😱 Your brain: "Error 404: Knowledge not found" – studied only ${rawStudy} hrs 😱`;
+                funnyQuote = `😱 Your brain: "Error 404: Knowledge not found" – studied ${rawStudy} hrs 😱`;
             } else if(stressFinal >= 55) {
                 funnyQuote = `😬 Exam vibes: "If I stare at book long enough, it might enter by osmosis" 😬 (Stress: ${stressFinal}%)`;
-            } else if(stressFinal <= 25 && proximityVal !== 'today') {
-                funnyQuote = `🍹 Too chill? Exam in ${proximityText}. Stress low: ${stressFinal}% – but life is good? 🤨`;
+            } else if(stressFinal <= 28 && proximityVal !== 'today') {
+                funnyQuote = `🍹 Too chill? Exam in ${proximityText}. Stress low: ${stressFinal}% – overconfidence? 🤨`;
             } else {
-                let randomIdx = Math.floor(Math.random() * funnyPool.length);
-                funnyQuote = funnyPool[randomIdx] + ` (stress ${stressFinal}%)`;
+                let rand = Math.floor(Math.random() * trollQuotes.length);
+                funnyQuote = trollQuotes[rand] + ` (stress ${stressFinal}%)`;
             }
             
+            // result prediction savage style
             let prediction = "";
-            if(stressFinal > 85) prediction = "💀 Prediction: 'Will write 'crying emoji' as answer' 🙏";
-            else if(stressFinal > 65) prediction = "😬 Result: 'Might pass if exam paper catches fire' ✨";
-            else if(stressFinal > 40) prediction = "🤞 Prediction: 'Pass with grace & extra prayer' 🕯️";
-            else if(stressFinal > 15) prediction = "😎 Prediction: 'Decent score – but why didn't you study more?'";
-            else prediction = "🏆 Prediction: 'Easy A+ , but watch out for overconfidence 😂'";
+            if(stressFinal > 88) prediction = "💀 Prediction: 'Will write 'send help' as full answer' 🙏";
+            else if(stressFinal > 68) prediction = "😬 Result: 'Might pass if exam paper catches fire & curve saves' ✨";
+            else if(stressFinal > 42) prediction = "🤞 Prediction: 'Pass with grace + extra prayer + luck 🕯️'";
+            else if(stressFinal > 18) prediction = "😎 Prediction: 'Decent score – but why didn't you study more?' 😏";
+            else prediction = "🏆 Prediction: 'Easy A+ , but watch out for overconfidence troll 😂'";
             
-            if(subjLower.includes("math")) prediction = "📐 Prediction: 'Hope calculator works in brain. Good luck! 🧮'";
+            if(subjLower.includes("math")) prediction = "📐 Prediction: 'Hope your calculator has extra batteries. Good luck! 🧮'";
             if(subjLower.includes("programming") || subjLower.includes("code")) prediction = "💻 Prediction: 'Runtime error in real life, but maybe debug during exam'";
+            if(subjLower.includes("bio")) prediction = "🧬 Prediction: 'Memorize mitochondria? you got this ... or not'";
             
             return {
                 stress: stressFinal,
@@ -443,11 +526,12 @@
             };
         }
         
+        // update UI and animations
         function updateMood() {
             let proximity = proximitySelect.value;
             let studyHrsRaw = studyHoursInput.value;
             let subjectRaw = subjectInput.value.trim();
-            if(subjectRaw === "") subjectRaw = "Unknown Subject";
+            if(subjectRaw === "") subjectRaw = "Mysterious Subject";
             
             const metrics = calculateTrollMetrics(proximity, studyHrsRaw, subjectRaw);
             
@@ -458,36 +542,41 @@
             prepLoadSpan.innerHTML = metrics.prepDisplay;
             resultPredictionSpan.innerHTML = metrics.predictionMsg;
             
+            // add shake animation to result panel
             const panel = document.getElementById('resultPanel');
             panel.classList.add('shake');
             setTimeout(() => {
                 panel.classList.remove('shake');
-            }, 500);
+            }, 550);
             
+            // blink stress if extremely high
             if(metrics.stress >= 80) {
                 stressSpan.classList.add('blink');
                 setTimeout(() => {
                     stressSpan.classList.remove('blink');
-                }, 1800);
+                }, 2000);
             } else {
                 stressSpan.classList.remove('blink');
             }
             
-            detectBtn.style.transform = "scale(0.98)";
+            // button playful effect
+            detectBtn.style.transform = "scale(0.97)";
             setTimeout(() => {
                 detectBtn.style.transform = "";
             }, 150);
             
-            console.log(`%c🧠 Exam mood: ${metrics.stress}% stress | ${metrics.funnyMsg}`, "color: #ff9933; font-size: 14px");
+            // extra: change emoji overlay fun
+            console.log(`%c🧠 EXAM TROLL: ${metrics.stress}% stress | ${metrics.funnyMsg}`, "background:#ff8800; color:#000; font-size:13px; border-radius:12px; padding:4px");
         }
         
+        // Event listeners
         detectBtn.addEventListener('click', (e) => {
             e.preventDefault();
             updateMood();
         });
         
-        const inputs = [studyHoursInput, subjectInput, proximitySelect];
-        inputs.forEach(input => {
+        const interactiveInputs = [studyHoursInput, subjectInput, proximitySelect];
+        interactiveInputs.forEach(input => {
             input.addEventListener('keypress', (e) => {
                 if(e.key === 'Enter') {
                     e.preventDefault();
@@ -496,18 +585,25 @@
             });
         });
         
+        // initial load with default fun data
         updateMood();
-     
-        const randomFunnyEdge = () => {
-            const funnyQuotes = [
-                "🤣 Did you study? no? perfect for this detector",
-                "📢 Warning: this app roasts your prep level 🔥",
-                "💪 'Exam mood: Professional last-minute warrior'"
-            ];
-            let idx = Math.floor(Math.random() * funnyQuotes.length);
-            funnyMsgSpan.setAttribute("data-hover", funnyQuotes[idx]);
-        };
-        setInterval(randomFunnyEdge, 8000);
+        
+        // rotating footer tip for extra trolling
+        const footerTips = [
+            "🤣 Did you study? no? perfect for this detector",
+            "🔥 Warning: this app roasts your prep level like a marshmallow",
+            "💪 'Exam mood: Professional last-minute warrior'",
+            "📢 Fun fact: stress meter is 100% imaginary",
+            "🎓 Studying 0h? Congrats, you're the main character of this troll"
+        ];
+        let tipIndex = 0;
+        setInterval(() => {
+            const footerEl = document.querySelector('footer');
+            if(footerEl && footerTips.length) {
+                tipIndex = (tipIndex + 1) % footerTips.length;
+                footerEl.innerHTML = `🤣 ${footerTips[tipIndex]} | Troll Lab ⚡`;
+            }
+        }, 7000);
     })();
 </script>
 </body>
